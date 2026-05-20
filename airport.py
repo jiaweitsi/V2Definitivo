@@ -10,6 +10,7 @@ class Airport:
         self.lon = lon
         self.schengen = False
 
+# ===== IS SCHENGEN AIRPORT =====
 
 def IsSchengenAirport(code):
     if code == "":
@@ -59,7 +60,7 @@ def ConvertirCordinadas(cord_str):
 
     return decimal
 
-
+# ===== LOAD AIRPORTS =====
 def LoadAirports(filename):
     lista_airports = []
     try:
@@ -80,6 +81,8 @@ def LoadAirports(filename):
     except:
         return []
     return lista_airports
+
+# ===== SAVE SCHENGEN AIRPORTS =====
 
 def SaveSchengenAirports(airports, filename):
     if len(airports) == 0:
@@ -103,6 +106,8 @@ def SaveSchengenAirports(airports, filename):
         i = i + 1
     f.close()
 
+# ===== ADD AIRPORT =====
+
 def AddAirport(airports, airport):
     i = 0
     encontrado = False
@@ -119,6 +124,7 @@ def AddAirport(airports, airport):
     else:
         return False
 
+# ===== REMOVE AIRPORT =====
 
 def RemoveAirport(airports, code):
     encontrado = False
@@ -137,6 +143,7 @@ def RemoveAirport(airports, code):
             pos = pos + 1
         del airports[n - 1]
 
+# ===== PLOT AIRPORTS =====
 
 def PlotAirports(airports):
     si = 0
@@ -158,6 +165,7 @@ def PlotAirports(airports):
 
     return fig
 
+# ===== MAP AIRPORTS (PUNTOS GOOGLE EARTH) =====
 
 def MapAirports(airports):
     f = open("airports_map.kml", "w")
